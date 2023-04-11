@@ -5,11 +5,12 @@ import { createClient } from 'next-sanity';
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home({blogs}) {
-  console.log(blogs);
+  console.log(blogs[0]);
   return (
     <div className="home">
+      <h1>{blogs[0].title}</h1>
       <div className="nav bg-gray-400 text-red-600">
-        I am navbar
+        {blogs[0].content}
       </div>
       <span>I am homepage</span>
     </div>
