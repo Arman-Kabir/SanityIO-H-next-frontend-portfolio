@@ -4,7 +4,8 @@ import { createClient } from 'next-sanity';
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+export default function Home({blogs}) {
+  console.log(blogs);
   return (
     <div className="home">
       <div className="nav bg-gray-400 text-red-600">
@@ -22,10 +23,10 @@ export async function getServerSideProps(context) {
     useCdn: true
   });
   const query = `*[_type == "blog"]`;
-  const home = await client.fetch(query);
+  const blogs = await client.fetch(query);
   return {
     props: {
-      blogs: home
+      blogs
     }
   }
 }
